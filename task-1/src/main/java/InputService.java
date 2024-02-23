@@ -2,10 +2,16 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.Objects;
 public class InputService {
-    public static ArrayList<Integer> GetNumber(Scanner in) {
+    private Scanner in;
+
+    public InputService(Scanner input) {
+        in = input;
+    };
+    public ArrayList<Integer> GetNumber() {
         System.out.println("enter a number : ");
         String entered = in.nextLine();
-        Validator.InputAnalysisResult chechRes = Validator.checkInput(entered);
+        Validator validator = new Validator();
+        Validator.InputAnalysisResult chechRes = validator.checkInput(entered);
         while (!Objects.equals(chechRes, Validator.InputAnalysisResult.ok)) {
             switch (chechRes) {
                 case notNumber:
@@ -19,7 +25,7 @@ public class InputService {
                     break;
             }
             entered = in.nextLine();
-            chechRes = Validator.checkInput(entered);
+            chechRes = validator.checkInput(entered);
         }
 
         ArrayList<Integer> res = new ArrayList<>();

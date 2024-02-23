@@ -1,5 +1,5 @@
 public class Validator {
-
+    String verifiable;
     public enum InputAnalysisResult{
         notFourDigits,
         repeatingDigits,
@@ -7,7 +7,16 @@ public class Validator {
         ok
 
     }
-    public static InputAnalysisResult checkInput(String entered) {
+
+    /*public Validator(String str) {
+        verifiable = new String(str);
+    }*/
+    public Validator() {}
+
+
+
+
+    public InputAnalysisResult checkInput(String entered) {
         String working = entered.trim(); // to delete starting and ending spaces
         //to check length
         for (char x : working.toCharArray()) {

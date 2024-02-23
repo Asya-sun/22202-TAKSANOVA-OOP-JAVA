@@ -24,10 +24,17 @@ public class Game {
         }
     }
 
-    public Game(String userString) {
-        Validator.InputAnalysisResult inputCheck = Validator.checkInput(userString);
-        while (!Objects.equals(Validator.InputAnalysisResult.ok, inputCheck)) {
 
+
+    public Game(String userString) {
+        Validator validator = new Validator();
+        Validator.InputAnalysisResult inputCheck = validator.checkInput(userString);
+        if (! Objects.equals(inputCheck, Validator.InputAnalysisResult.ok)) {
+            throw new IllegalArgumentException("Number must contain 4 unrepeated digits");
+        }
+        number = new ArrayList<Integer>();
+        for (char x : userString.toCharArray()) {
+            number.add(Character.getNumericValue(x));
         }
     }
 
@@ -36,11 +43,12 @@ public class Game {
         int buls = 0;
         int cows = 0;
         Scanner in = new Scanner(System.in);
+        InputService reader = new InputService(in);
 
         while (buls != 4) {
-            suggested = InputService.GetNumber(in);
-            cows = cowCounter(suggested, number);
-            buls = bulCounter(suggested, number);
+            suggested = reader.GetNumber();
+            cows = cowCounter(suggested);
+            buls = bulCounter(suggested);
             if (buls == 4) {
                 System.out.println("Good work! You won!");
                 break;
@@ -53,7 +61,7 @@ public class Game {
         in.close();
     }
 
-    public static int bulCounter(ArrayList<Integer> userNumber, ArrayList<Integer> number) {
+    public int bulCounter(ArrayList<Integer> userNumber) {
         int buls = 0;
         for (int i = 0; i < 4; ++i) {
             int userDigit = userNumber.get(i);
@@ -64,7 +72,7 @@ public class Game {
         return buls;
     }
 
-    public static int cowCounter(ArrayList<Integer> userNumber, ArrayList<Integer> number) {
+    public int cowCounter(ArrayList<Integer> userNumber) {
         int cows = 0;
         for (int i = 0; i < 4; ++i) {
             int userDigit = userNumber.get(i);
