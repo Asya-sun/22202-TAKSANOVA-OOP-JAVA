@@ -7,10 +7,6 @@ public class Validator {
         ok
 
     }
-
-    /*public Validator(String str) {
-        verifiable = new String(str);
-    }*/
     public Validator() {}
 
 

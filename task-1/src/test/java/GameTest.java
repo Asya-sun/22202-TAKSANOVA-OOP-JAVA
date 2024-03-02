@@ -8,32 +8,22 @@ public class GameTest {
     @Test
     public void cowsTest() {
         Game a = new Game("1234");
-        ArrayList<Integer> test = new ArrayList<>();
-        test.add(4);
-        test.add(1);
-        test.add(2);
-        test.add(3);
-
-
+        String test = "4123";
         Assert.assertEquals(a.cowCounter(test), 4);
-        test.set(0,0);
+        test = "0123";
         Assert.assertEquals(a.cowCounter(test), 3);
-        test.set(1,7);
+        test = "0723";
         Assert.assertEquals(a.cowCounter(test), 2);
     }
 
     @Test
     public void bulsTest() {
         Game a = new Game("1234");
-        ArrayList<Integer> test = new ArrayList<>();
-        test.add(1);
-        test.add(2);
-        test.add(3);
-        test.add(4);
+        String test = "1234";
         Assert.assertEquals(a.bulCounter(test), 4);
-        test.set(0,0);
+        test = "0234";
         Assert.assertEquals(a.bulCounter(test), 3);
-        test.set(1,1);
+        test = "0134";
         Assert.assertEquals(a.bulCounter(test), 2);
     }
 

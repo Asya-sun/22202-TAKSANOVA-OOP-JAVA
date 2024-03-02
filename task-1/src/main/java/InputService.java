@@ -7,7 +7,7 @@ public class InputService {
     public InputService(Scanner input) {
         in = input;
     };
-    public ArrayList<Integer> GetNumber() {
+    public String GetNumber() {
         System.out.println("enter a number : ");
         String entered = in.nextLine();
         Validator validator = new Validator();
@@ -27,11 +27,6 @@ public class InputService {
             entered = in.nextLine();
             chechRes = validator.checkInput(entered);
         }
-
-        ArrayList<Integer> res = new ArrayList<>();
-        for (char x : entered.toCharArray()) {
-            res.add(Character.getNumericValue(x));
-        }
-        return res;
+        return entered;
     }
 }

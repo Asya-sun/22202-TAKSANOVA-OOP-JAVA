@@ -6,7 +6,7 @@ import java.util.Objects;
 
 
 public class Game {
-    private static ArrayList<Integer> number;
+    private ArrayList<Integer> number;
     public Game() {
         number = new ArrayList<Integer>();
         Random random = new Random();
@@ -25,7 +25,6 @@ public class Game {
     }
 
 
-
     public Game(String userString) {
         Validator validator = new Validator();
         Validator.InputAnalysisResult inputCheck = validator.checkInput(userString);
@@ -39,7 +38,7 @@ public class Game {
     }
 
     public void StartGame() {
-        ArrayList<Integer> suggested;
+        String suggested;
         int buls = 0;
         int cows = 0;
         Scanner in = new Scanner(System.in);
@@ -61,10 +60,11 @@ public class Game {
         in.close();
     }
 
-    public int bulCounter(ArrayList<Integer> userNumber) {
+    public int bulCounter(String userNumber) {
+        char[] userArray = userNumber.toCharArray();
         int buls = 0;
         for (int i = 0; i < 4; ++i) {
-            int userDigit = userNumber.get(i);
+            int userDigit = Character.getNumericValue(userArray[i]);
             if (number.indexOf(userDigit) == i) {
                 buls++;
             }
@@ -72,10 +72,11 @@ public class Game {
         return buls;
     }
 
-    public int cowCounter(ArrayList<Integer> userNumber) {
+    public int cowCounter(String userNumber) {
+        char[] userArray = userNumber.toCharArray();
         int cows = 0;
         for (int i = 0; i < 4; ++i) {
-            int userDigit = userNumber.get(i);
+            int userDigit = Character.getNumericValue(userArray[i]);
             if (number.contains(userDigit) && number.indexOf(userDigit) != i ) {
                 cows++;
             }
