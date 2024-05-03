@@ -1,0 +1,9 @@
+POP=commands.PopCommand
+PUSH=commands.PushCommand
+DEFINE=commands.DefineCommand
+PRINT=commands.PrintCommand
++=commands.AddCommand
+-=commands.SubtractCommand
+*=commands.MultiplyCommand
+/=commands.DivideCommand
+SQRT=commands.SqrtCommand
