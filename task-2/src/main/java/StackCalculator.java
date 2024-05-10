@@ -7,8 +7,6 @@ import exceptions.StackUnderflowException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.FileNotFoundException;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -27,11 +25,14 @@ public class StackCalculator {
             String line = input.nextLine();
             String[] parsed = line.split(" ");
             String[] argumentsToCommand = Arrays.copyOfRange(parsed, 1, parsed.length);
-            if (!commands.getCommands().containsKey(parsed[0])) {
+
+            Command command;
+            try {
+                command = commands.createCommand(parsed[0]);
+            } catch (ArgumentsException e) {
                 logger.warn("no such command {}", parsed[0]);
                 continue;
             }
-            Command command = commands.getCommands().get(parsed[0]);
             try {
                 command.execute(context, (Object[]) argumentsToCommand);
             } catch (ArgumentsException | DivideByZeroException | StackUnderflowException e) {

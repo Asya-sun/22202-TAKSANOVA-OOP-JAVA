@@ -1,10 +1,11 @@
 package commands;
 
 import calculatorcontext.CalculatorContext;
+import commands.Command;
 import exceptions.StackUnderflowException;
 
 
-public class PrintCommand extends Command{
+public class PrintCommand extends Command {
     @Override
     public void execute(CalculatorContext context, Object... args) throws StackUnderflowException {
         if (context.getStack().isEmpty()) {

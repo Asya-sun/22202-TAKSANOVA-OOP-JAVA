@@ -1,10 +1,11 @@
 import calculatorcontext.CalculatorContext;
+import commands.AddCommand;
 import commands.*;
+import commands.PopCommand;
 import exceptions.ArgumentsException;
 import exceptions.DivideByZeroException;
 import exceptions.StackUnderflowException;
 import org.junit.Assert;
-import org.junit.Rule;
 import org.junit.Test;
 
 public class CommandsTest {

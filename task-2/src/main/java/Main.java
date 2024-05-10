@@ -1,5 +1,3 @@
-import commandfactory.*;
-import commands.Command;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
 
@@ -12,8 +10,6 @@ public class Main {
 
 
     public static void main(String[] args) {
-        /*CommandFactory cf = new CommandFactory();
-        cf.printCommands();*/
         Scanner in;
         if (args.length == 0) {
             in = new Scanner(System.in);
