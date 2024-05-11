@@ -16,7 +16,7 @@ public class CommandFactory {
     //if file is in commandfactory dir, path must be this
     //"src/main/java/commandfactory/config.properties.txt";
     private final String configFile = "/config.properties.txt";
-    public HashMap<String, Command> commandsList = new HashMap<>();
+    private HashMap<String, Command> commandsList = new HashMap<>();
 
     public CommandFactory() {
         InputStream inputStream = CommandFactory.class.getResourceAsStream(configFile);

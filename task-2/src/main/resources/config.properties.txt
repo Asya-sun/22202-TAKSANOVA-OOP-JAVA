@@ -7,3 +7,5 @@ DEFINE=commands.DefineCommand
 SQRT=commands.SqrtCommand
 POP=commands.PopCommand
 PRINT=commands.PrintCommand
+++=commands.IncrementCommand
+--=commands.DecrementCommand
