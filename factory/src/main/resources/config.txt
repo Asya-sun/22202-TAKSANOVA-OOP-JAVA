@@ -1,0 +1,8 @@
+StorageBodyworkSize=10
+StorageAccessorySize=50
+StorageEngineSize=10
+StorageAutoSize=5
+AccessorySupplierNumber=5
+DealerNumber=10
+WorkerNumber=20
+LogUse=1
