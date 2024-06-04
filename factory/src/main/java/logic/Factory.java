@@ -4,7 +4,6 @@ import logic.config_parser.ConfigParser;
 import logic.dealer.Dealer;
 import logic.details.*;
 import logic.factory_controllers.AutoWarehouseController;
-import logic.factory_controllers.SuppliersController;
 import logic.observer_pattern.Event;
 import logic.config_parser.ConfigParameters;
 import logic.warehouses.*;
@@ -58,25 +57,26 @@ public class Factory extends JFrame  implements Runnable, Observer {
         }
         //dealers initializing
         dealers = new ArrayList<>();
-        boolean useLog = configParser.getValue(ConfigParameters.LogUse) == 1 ? true : false;
-        for (int i = 0; i < configParser.getValue(ConfigParameters.DealerNumber); ++i) {
-            dealers.add(new Dealer(parameters.dealerPeriod, autoWarehouse, useLog, i));
-        }
+
 
         //controllers initializing
-        SuppliersController suppliersController = new SuppliersController(configParser.getValue(ConfigParameters.WorkerNumber),
-                accessoryWarehouse, engineWarehouse, bodyworkWarehouse, autoWarehouse);
-        autoWarehouseController = new AutoWarehouseController(autoWarehouse, suppliersController);
+        autoWarehouseController = new AutoWarehouseController( accessoryWarehouse ,autoWarehouse, bodyworkWarehouse, engineWarehouse, configParser.getValue(ConfigParameters.WorkerNumber));
+
+
+        boolean useLog = configParser.getValue(ConfigParameters.LogUse) == 1 ? true : false;
+        for (int i = 0; i < configParser.getValue(ConfigParameters.DealerNumber); ++i) {
+            dealers.add(new Dealer(parameters.dealerPeriod, autoWarehouse, autoWarehouseController, useLog, i));
+        }
 
         parameters.addObserver(this);
         //frame = new FactoryFrame(this);
         FullFactoryPanel panel = new FullFactoryPanel(this);
-        Toolkit toolkit = Toolkit.getDefaultToolkit();
 
+        Toolkit toolkit = Toolkit.getDefaultToolkit();
         Dimension dimension = toolkit.getScreenSize();
         int width = dimension.width;
         int height = dimension.height;
-        this.setBounds(dimension.width/2 - width/2, dimension.height/2 - height/2, width, height);
+        this.setBounds(0, 0, width, height);
 
         //this.setSize(new Dimension(1080, 720));
         this.setTitle("factory");
@@ -104,20 +104,20 @@ public class Factory extends JFrame  implements Runnable, Observer {
     @Override
     public void update(Event event) {
         if (event instanceof AccessoryPeriodEvent) {
-            parameters.accessoryPeriod = event.getValue() * 10000;
+            parameters.accessoryPeriod = event.getValue() * 1000;
             for (AccessorySupplier supplier : accessorySuppliers) {
                 supplier.setPeriod(parameters.accessoryPeriod);
             }
         } else if (event instanceof BodyworkPeriodEvent) {
-            parameters.bodyworkPeriod = event.getValue() * 10000;
+            parameters.bodyworkPeriod = event.getValue() * 1000;
             bodyworkSupplier.setPeriod(parameters.bodyworkPeriod);
         } else if (event instanceof DealerPeriodEvent) {
-            parameters.dealerPeriod = event.getValue() * 10000;
+            parameters.dealerPeriod = event.getValue() * 1000;
             for (Dealer dealer : dealers) {
                 dealer.setPeriod(parameters.dealerPeriod);
             }
         } else if (event instanceof EnginePeriodEvent) {
-            parameters.enginePeriod = event.getValue() * 10000;
+            parameters.enginePeriod = event.getValue() * 1000;
             engineSupplier.setPeriod(parameters.enginePeriod);
         }
     }

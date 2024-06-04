@@ -29,6 +29,7 @@ abstract public class Warehouse<Detail> extends ThreadsQueue<Detail> {
         super.put(a);
     }
 
+
     @Override
     synchronized public Detail get() {
         notify();

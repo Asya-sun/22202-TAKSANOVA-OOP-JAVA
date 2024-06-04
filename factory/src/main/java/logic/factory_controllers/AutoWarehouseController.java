@@ -1,15 +1,39 @@
 package logic.factory_controllers;
 
+import logic.details.Accessory;
 import logic.details.Auto;
+import logic.details.Bodywork;
+import logic.details.Engine;
+import logic.threadpool.ThreadPool;
+import logic.threadpool.ThreadsQueue;
+import logic.warehouses.AccessoryWarehouse;
 import logic.warehouses.AutoWarehouse;
+import logic.warehouses.BodyworkWarehouse;
+import logic.warehouses.EngineWarehouse;
 
 public class AutoWarehouseController extends Thread{
-    private final AutoWarehouse<Auto> autoWarehouse;
-    private final SuppliersController suppliersController;
 
-    public AutoWarehouseController(AutoWarehouse autoWarehouse1, SuppliersController suppliersController1) {
-        this.autoWarehouse = autoWarehouse1;
-        suppliersController = suppliersController1;
+    //warehouses
+    private AccessoryWarehouse<Accessory> accessoryWarehouse;
+    private final AutoWarehouse<Auto> autoWarehouse;
+    private BodyworkWarehouse<Bodywork> bodyworkWarehouse;
+    private EngineWarehouse<Engine> engineWarehouse;
+    //tasks queue
+    private ThreadsQueue<Thread> queue;
+    private ThreadPool taskExecutors;
+
+    public AutoWarehouseController(AccessoryWarehouse<Accessory> accessoryWarehouse1,
+                                   AutoWarehouse autoWarehouse1,
+                                   BodyworkWarehouse<Bodywork> bodyworkWarehouse1,
+                                   EngineWarehouse<Engine> engineWarehouse1,
+                                   int numberWorkers1) {
+        accessoryWarehouse = accessoryWarehouse1;
+        autoWarehouse = autoWarehouse1;
+        engineWarehouse = engineWarehouse1;
+        bodyworkWarehouse = bodyworkWarehouse1;
+        queue = new ThreadsQueue<>();
+        taskExecutors = new ThreadPool(queue, numberWorkers1);
+        taskExecutors.start();
     }
 
 
@@ -19,11 +43,12 @@ public class AutoWarehouseController extends Thread{
             try {
                 wait();
                 synchronized (autoWarehouse) {
+                    System.out.println("autoWarehouse.getStorageSize() = " + autoWarehouse.getStorageSize());
                     if (autoWarehouse.getCurrentSize() < autoWarehouse.getStorageSize()) {
                         int prevCurSize = autoWarehouse.getCurrentSize();
                         int storSize = autoWarehouse.getStorageSize();
                         for (int i = prevCurSize; i < storSize; ++i) {
-                            suppliersController.addTask();
+                            addTask();
                         }
                     }
                 }
@@ -32,6 +57,15 @@ public class AutoWarehouseController extends Thread{
                 throw new RuntimeException();
             }
         }
+    }
+
+    public void addTask() {
+        queue.put(new Worker(accessoryWarehouse, engineWarehouse, bodyworkWarehouse, autoWarehouse));
+
+    }
+
+    public AutoWarehouse getAutoWarehouse() {
+        return autoWarehouse;
     }
 
 }

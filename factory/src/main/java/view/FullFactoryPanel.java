@@ -5,8 +5,6 @@ import view.factory_observables.*;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -65,7 +63,12 @@ public class FullFactoryPanel extends JPanel implements ActionListener {
         Image image = null;
         try {
             image = ImageIO.read(FullFactoryPanel.class.getResource("/factory.png"));
-            g2.drawImage(image, 200, 200,null);
+            Toolkit toolkit = Toolkit.getDefaultToolkit();
+
+            Dimension dimension = toolkit.getScreenSize();
+            int width = dimension.width;
+            int height = dimension.height;
+            g2.drawImage(image, dimension.width/2 - width/4, dimension.height/2 - height/4,null);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

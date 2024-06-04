@@ -10,7 +10,7 @@ public class Parameters extends Observable implements Observer  {
     public int enginePeriod;
 
     public Parameters() {
-        this(12000, 20000, 15000, 10000);
+        this(5000, 5000, 5000, 5000);
     }
 
 

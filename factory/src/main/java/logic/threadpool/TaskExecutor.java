@@ -10,7 +10,7 @@ public class TaskExecutor extends Thread{
     @Override
     public void run() {
         while (true) {
-            threadsQueue.get().run();
+            threadsQueue.get().start();
         }
     }
 

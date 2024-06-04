@@ -24,7 +24,7 @@ public class FactoryFrame extends JFrame  {
         Dimension dimension = toolkit.getScreenSize();
         int width = dimension.width/2;
         int height = dimension.height/2;
-        this.setBounds(dimension.width/2 - width/2, dimension.height/2 - height/2, width, height);
+        this.setBounds(dimension.width/2 - width/4*3, dimension.height/2 - height/2, width, height);
 
 
         factoryPanel = new FullFactoryPanel(factory);

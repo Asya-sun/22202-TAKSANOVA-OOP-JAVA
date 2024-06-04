@@ -27,7 +27,7 @@ public class Worker extends Thread{
                   EngineWarehouse<Engine> engineWarehouse1,
                   BodyworkWarehouse<Bodywork> bodyworkWarehouse1,
                   AutoWarehouse<Auto> autoWarehouse1) {
-        period = 10;
+        period = 1000;
         engineWarehouse = engineWarehouse1;
         bodyworkWarehouse = bodyworkWarehouse1;
         accessoryWarehouse = accessoryWarehouse1;
