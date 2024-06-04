@@ -20,12 +20,4 @@ public class Parameters extends Observable implements Observer  {
         this.bodyworkPeriod = bodyworkPeriod;
         this.enginePeriod = enginePeriod;
     }
-
-    /*
-    @Override
-    public void update(Event event) {
-
-    }
-
-     */
 }

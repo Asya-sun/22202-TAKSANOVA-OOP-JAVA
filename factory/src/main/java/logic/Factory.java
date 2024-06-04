@@ -15,11 +15,8 @@ import view.factory_events.BodyworkPeriodEvent;
 import view.factory_events.DealerPeriodEvent;
 import view.factory_events.EnginePeriodEvent;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 public class Factory extends JFrame  implements Runnable, Observer {
@@ -68,7 +65,6 @@ public class Factory extends JFrame  implements Runnable, Observer {
         }
 
         parameters.addObserver(this);
-        //frame = new FactoryFrame(this);
         FullFactoryPanel panel = new FullFactoryPanel(this);
 
         Toolkit toolkit = Toolkit.getDefaultToolkit();
@@ -76,8 +72,6 @@ public class Factory extends JFrame  implements Runnable, Observer {
         int width = dimension.width;
         int height = dimension.height;
         this.setBounds(0, 0, width, height);
-
-        //this.setSize(new Dimension(1080, 720));
         this.setTitle("factory");
         this.getContentPane().add(panel);
         this.setVisible(true);
