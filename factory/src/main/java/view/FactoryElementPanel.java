@@ -21,7 +21,7 @@ public class FactoryElementPanel extends JPanel {
         slider.setSnapToTicks(true);
         slider.setPaintLabels(true);
         slider.addChangeListener(changeListener);
-
+        slider.setPaintTrack(true);
         this.add(label);
         this.add(slider);
 

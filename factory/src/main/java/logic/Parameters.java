@@ -21,8 +21,11 @@ public class Parameters extends Observable implements Observer  {
         this.enginePeriod = enginePeriod;
     }
 
+    /*
     @Override
     public void update(Event event) {
 
     }
+
+     */
 }

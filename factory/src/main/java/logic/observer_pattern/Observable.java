@@ -12,7 +12,7 @@ abstract public class Observable {
 
     public void notify(Event event){
         for (Observer a : observers) {
-            a.update(event);
+            a.notify(event);
         }
 
     }

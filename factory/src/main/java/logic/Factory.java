@@ -9,7 +9,6 @@ import logic.config_parser.ConfigParameters;
 import logic.warehouses.*;
 import logic.suppliers.*;
 import logic.observer_pattern.Observer;
-import view.FactoryFrame;
 import view.FullFactoryPanel;
 import view.factory_events.AccessoryPeriodEvent;
 import view.factory_events.BodyworkPeriodEvent;
@@ -102,22 +101,22 @@ public class Factory extends JFrame  implements Runnable, Observer {
     }
 
     @Override
-    public void update(Event event) {
+    public void notify(Event event) {
         if (event instanceof AccessoryPeriodEvent) {
-            parameters.accessoryPeriod = event.getValue() * 1000;
+            parameters.accessoryPeriod = event.value * 1000;
             for (AccessorySupplier supplier : accessorySuppliers) {
                 supplier.setPeriod(parameters.accessoryPeriod);
             }
         } else if (event instanceof BodyworkPeriodEvent) {
-            parameters.bodyworkPeriod = event.getValue() * 1000;
+            parameters.bodyworkPeriod = event.value * 1000;
             bodyworkSupplier.setPeriod(parameters.bodyworkPeriod);
         } else if (event instanceof DealerPeriodEvent) {
-            parameters.dealerPeriod = event.getValue() * 1000;
+            parameters.dealerPeriod = event.value * 1000;
             for (Dealer dealer : dealers) {
                 dealer.setPeriod(parameters.dealerPeriod);
             }
         } else if (event instanceof EnginePeriodEvent) {
-            parameters.enginePeriod = event.getValue() * 1000;
+            parameters.enginePeriod = event.value * 1000;
             engineSupplier.setPeriod(parameters.enginePeriod);
         }
     }

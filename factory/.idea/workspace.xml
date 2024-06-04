@@ -4,17 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d5d2287f-277d-40e3-95e4-ac5eee61dc2b" name="Changes" comment="">
+    <list default="true" id="d5d2287f-277d-40e3-95e4-ac5eee61dc2b" name="Changes" comment="some changes">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/logic/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/Factory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/logic/Parameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/Parameters.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/dealer/Dealer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/dealer/Dealer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/factory_controllers/AutoWarehouseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/factory_controllers/AutoWarehouseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/factory_controllers/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/factory_controllers/Worker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/threadpool/TaskExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/threadpool/TaskExecutor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/warehouses/AutoWarehouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/warehouses/AutoWarehouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/warehouses/Warehouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/warehouses/Warehouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/FactoryFrame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/FactoryFrame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/view/FullFactoryPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/FullFactoryPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logic/observer_pattern/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/observer_pattern/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logic/observer_pattern/Observable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/observer_pattern/Observable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/logic/observer_pattern/Observer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/observer_pattern/Observer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/FactoryElementPanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/view/FactoryElementPanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/view/FactoryFrame.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,14 +56,34 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\PC\oop-java-labs\22202-TAKSANOVA-OOP-JAVA\factory\src\main\resources" />
+      <recent name="C:\Users\PC\oop-java-labs\22202-TAKSANOVA-OOP-JAVA\factory\src\main\java\view" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="Main" type="Application" factoryName="Application" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="logic.Main" />
+      <module name="factory" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="logic.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
         <option value="jdk-17.0.10-graalvm-jdk-17.0.10-4caba194b151-6d8b2ca1" />
+        <option value="jdk-17.0.9-graalvm-jdk-17.0.9-4caba194b151-1dc07fd1" />
       </set>
     </attachedChunks>
   </component>
@@ -84,11 +102,25 @@
       <workItem from="1717213983497" duration="3826000" />
       <workItem from="1717218653097" duration="3487000" />
       <workItem from="1717506692226" duration="2287000" />
-      <workItem from="1717513224084" duration="6212000" />
+      <workItem from="1717513224084" duration="6956000" />
+      <workItem from="1717521940289" duration="1655000" />
     </task>
+    <task id="LOCAL-00001" summary="some changes">
+      <option name="closed" value="true" />
+      <created>1717521207388</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1717521207388</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="some changes" />
+    <option name="LAST_COMMIT_MESSAGE" value="some changes" />
   </component>
 </project>
