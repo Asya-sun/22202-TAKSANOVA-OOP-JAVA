@@ -30,12 +30,6 @@ public class Dealer extends Thread{
 
     }
 
-
-    public Dealer(int period1, AutoWarehouse<Auto> warehouse1, FactoryController factoryController, int dealerNumber) {
-        this(period1, warehouse1, factoryController, false, dealerNumber);
-    }
-
-
     void buy()  throws InterruptedException {
         sleep(period);
         synchronized (factoryController) {
