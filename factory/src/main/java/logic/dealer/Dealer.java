@@ -1,7 +1,7 @@
 package logic.dealer;
 
 import logic.details.Auto;
-import logic.factory_controllers.FactoryController;
+import logic.factory_controller.FactoryController;
 import logic.warehouses.AutoWarehouse;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;

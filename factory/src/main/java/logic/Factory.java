@@ -3,7 +3,7 @@ package logic;
 import logic.config_parser.ConfigParser;
 import logic.dealer.Dealer;
 import logic.details.*;
-import logic.factory_controllers.FactoryController;
+import logic.factory_controller.FactoryController;
 import logic.observer_pattern.Event;
 import logic.config_parser.ConfigParameters;
 import logic.warehouses.*;

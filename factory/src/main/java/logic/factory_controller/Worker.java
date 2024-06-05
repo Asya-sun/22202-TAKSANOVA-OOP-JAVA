@@ -1,4 +1,4 @@
-package logic.factory_controllers;
+package logic.factory_controller;
 
 import logic.details.*;
 import logic.warehouses.*;
