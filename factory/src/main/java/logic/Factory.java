@@ -3,7 +3,7 @@ package logic;
 import logic.config_parser.ConfigParser;
 import logic.dealer.Dealer;
 import logic.details.*;
-import logic.factory_controllers.AutoWarehouseController;
+import logic.factory_controllers.FactoryController;
 import logic.observer_pattern.Event;
 import logic.config_parser.ConfigParameters;
 import logic.warehouses.*;
@@ -32,7 +32,7 @@ public class Factory extends JFrame  implements Runnable, Observer {
     //dealers
     private final ArrayList<Dealer> dealers;
     //autro warehouse controller
-    private final AutoWarehouseController autoWarehouseController;
+    private final FactoryController autoWarehouseController;
 
     public Parameters parameters;
 
@@ -56,7 +56,7 @@ public class Factory extends JFrame  implements Runnable, Observer {
 
 
         //controllers initializing
-        autoWarehouseController = new AutoWarehouseController( accessoryWarehouse ,autoWarehouse, bodyworkWarehouse, engineWarehouse, configParser.getValue(ConfigParameters.WorkerNumber));
+        autoWarehouseController = new FactoryController( accessoryWarehouse ,autoWarehouse, bodyworkWarehouse, engineWarehouse, configParser.getValue(ConfigParameters.WorkerNumber));
 
 
         boolean useLog = configParser.getValue(ConfigParameters.LogUse) == 1 ? true : false;

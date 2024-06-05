@@ -1,8 +1,7 @@
 package logic.dealer;
 
 import logic.details.Auto;
-import logic.details.Detail;
-import logic.factory_controllers.AutoWarehouseController;
+import logic.factory_controllers.FactoryController;
 import logic.warehouses.AutoWarehouse;
 import org.slf4j.LoggerFactory;
 import org.slf4j.Logger;
@@ -10,14 +9,14 @@ import org.slf4j.Logger;
 public class Dealer extends Thread{
     private int period;
     protected AutoWarehouse<Auto> warehouse;
-    protected final AutoWarehouseController autoWarehouseController;
+    protected final FactoryController factoryController;
     private int dealerNumber;
     private final Logger logger = LoggerFactory.getLogger(Dealer.class);
     private boolean logUse;
     //хранилище
     public Dealer(int period1,
                   AutoWarehouse<Auto> warehouse1,
-                  AutoWarehouseController autoWarehouseController,
+                  FactoryController factoryController,
                   boolean logUse,
                   int dealerNumber) {
         this.logUse = logUse;
@@ -27,23 +26,23 @@ public class Dealer extends Thread{
         }
         this.period = period1;
         this.warehouse = warehouse1;
-        this.autoWarehouseController = autoWarehouseController;
+        this.factoryController = factoryController;
 
     }
 
 
-    public Dealer(int period1, AutoWarehouse<Auto> warehouse1, AutoWarehouseController autoWarehouseController, int dealerNumber) {
-        this(period1, warehouse1, autoWarehouseController, false, dealerNumber);
+    public Dealer(int period1, AutoWarehouse<Auto> warehouse1, FactoryController factoryController, int dealerNumber) {
+        this(period1, warehouse1, factoryController, false, dealerNumber);
     }
 
 
     void buy()  throws InterruptedException {
         sleep(period);
-        synchronized (autoWarehouseController) {
-            autoWarehouseController.notify();
+        synchronized (factoryController) {
+            factoryController.notify();
         }
         //Auto auto = warehouse.get();
-        Auto auto = (Auto) autoWarehouseController.getAutoWarehouse().get();
+        Auto auto = (Auto) factoryController.getAutoWarehouse().get();
         if (logUse) {
             logger.info("Dealer {0} : Auto {1} : (Bodywork: {2}, Engine {3}, Accessory {4})",
                     dealerNumber, auto.getId(), auto.getBodywork().getId(), auto.getEngine().getId(), auto.getAccessory().getId());

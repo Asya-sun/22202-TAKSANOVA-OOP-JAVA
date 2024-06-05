@@ -11,7 +11,7 @@ import logic.warehouses.AutoWarehouse;
 import logic.warehouses.BodyworkWarehouse;
 import logic.warehouses.EngineWarehouse;
 
-public class AutoWarehouseController extends Thread{
+public class FactoryController extends Thread{
 
     //warehouses
     private AccessoryWarehouse<Accessory> accessoryWarehouse;
@@ -22,11 +22,11 @@ public class AutoWarehouseController extends Thread{
     private ThreadsQueue<Thread> queue;
     private ThreadPool taskExecutors;
 
-    public AutoWarehouseController(AccessoryWarehouse<Accessory> accessoryWarehouse1,
-                                   AutoWarehouse autoWarehouse1,
-                                   BodyworkWarehouse<Bodywork> bodyworkWarehouse1,
-                                   EngineWarehouse<Engine> engineWarehouse1,
-                                   int numberWorkers1) {
+    public FactoryController(AccessoryWarehouse<Accessory> accessoryWarehouse1,
+                             AutoWarehouse autoWarehouse1,
+                             BodyworkWarehouse<Bodywork> bodyworkWarehouse1,
+                             EngineWarehouse<Engine> engineWarehouse1,
+                             int numberWorkers1) {
         accessoryWarehouse = accessoryWarehouse1;
         autoWarehouse = autoWarehouse1;
         engineWarehouse = engineWarehouse1;
