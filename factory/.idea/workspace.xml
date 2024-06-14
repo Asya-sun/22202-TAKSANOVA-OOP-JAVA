@@ -7,19 +7,7 @@
     <list default="true" id="d5d2287f-277d-40e3-95e4-ac5eee61dc2b" name="Changes" comment="some changes">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/logic/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/Factory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/Parameters.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/Parameters.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/dealer/Dealer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/dealer/Dealer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/factory_controller/FactoryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/factory_controller/FactoryController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/suppliers/AccessorySupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/suppliers/AccessorySupplier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/suppliers/BodyworkSupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/suppliers/BodyworkSupplier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/suppliers/EngineSupplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/suppliers/EngineSupplier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/suppliers/Supplier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/suppliers/Supplier.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/threadpool/TaskExecutor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/threadpool/TaskExecutor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/logic/threadpool/ThreadPool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/threadpool/ThreadPool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/threadpool/ThreadsQueue.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/warehouses/AutoWarehouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/warehouses/AutoWarehouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/logic/warehouses/Warehouse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/logic/warehouses/Warehouse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/config.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,6 +105,7 @@
       <workItem from="1717820498291" duration="261000" />
       <workItem from="1718166601263" duration="8625000" />
       <workItem from="1718183467469" duration="3361000" />
+      <workItem from="1718334118667" duration="1623000" />
     </task>
     <task id="LOCAL-00001" summary="some changes">
       <option name="closed" value="true" />

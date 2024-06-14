@@ -92,7 +92,6 @@ public class Factory extends JFrame  implements Runnable, Observer {
         for (Dealer dealer : dealers) {
             dealer.start();
         }
-        //factoryController.run();
 
     }
 

@@ -4,11 +4,9 @@ import java.util.ArrayDeque;
 
 public class ThreadPool extends Thread{
     private final ArrayDeque<TaskExecutor> taskExecutors;
-    //private final BlockingQueue<Thread> blockingQueue;
     private final ArrayDeque<Thread> queue;
 
     public ThreadPool(int numTaskExecutors) {
-        //this.blockingQueue = pool;
         queue = new ArrayDeque<>();
         taskExecutors = new ArrayDeque<>();
         for (int i = 0; i < numTaskExecutors; ++i) {
