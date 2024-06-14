@@ -10,8 +10,6 @@ import logic.warehouses.AutoWarehouse;
 import logic.warehouses.BodyworkWarehouse;
 import logic.warehouses.EngineWarehouse;
 
-import java.util.EventListener;
-
 public class FactoryController {
 
     //warehouses
@@ -21,7 +19,7 @@ public class FactoryController {
     private EngineWarehouse<Engine> engineWarehouse;
     //tasks queue
     //private BlockingQueue<Thread> queue;
-    private ThreadPool taskExecutors;
+    private ThreadPool workers;
 
     public FactoryController(AccessoryWarehouse<Accessory> accessoryWarehouse1,
                              AutoWarehouse autoWarehouse1,
@@ -33,14 +31,13 @@ public class FactoryController {
         engineWarehouse = engineWarehouse1;
         bodyworkWarehouse = bodyworkWarehouse1;
         //queue = new BlockingQueue<>();
-        taskExecutors = new ThreadPool(numberWorkers1);
-        taskExecutors.start();
+        workers = new ThreadPool(numberWorkers1);
+        workers.initiate();
     }
 
 
     public void produceNewAuto(){
         synchronized (autoWarehouse) {
-            System.out.println("autoWarehouse.getStorageSize() = " + autoWarehouse.getStorageSize());
             if (autoWarehouse.getCurrentSize() < autoWarehouse.getStorageSize()) {
                 int prevCurSize = autoWarehouse.getCurrentSize();
                 int storSize = autoWarehouse.getStorageSize();
@@ -52,7 +49,7 @@ public class FactoryController {
     }
 
     public void addTask() {
-        taskExecutors.putTask(new Worker(accessoryWarehouse, engineWarehouse, bodyworkWarehouse, autoWarehouse));
+        workers.putTask(new WorkerTask(accessoryWarehouse, engineWarehouse, bodyworkWarehouse, autoWarehouse));
 
     }
 }

@@ -1,9 +1,12 @@
 package logic.factory_controller;
 
 import logic.details.*;
+import logic.threadpool.Task;
 import logic.warehouses.*;
 
-public class Worker extends Thread{
+import static java.lang.Thread.sleep;
+
+public class WorkerTask extends Task {
     private int period;
     AccessoryWarehouse<Accessory> accessoryWarehouse;
     EngineWarehouse<Engine> engineWarehouse;
@@ -11,11 +14,11 @@ public class Worker extends Thread{
     AutoWarehouse<Auto> autoWarehouse;
 
 
-    public Worker(int period1,
-                  AccessoryWarehouse<Accessory> accessoryWarehouse1,
-                  EngineWarehouse<Engine> engineWarehouse1,
-                  BodyworkWarehouse<Bodywork> bodyworkWarehouse1,
-                  AutoWarehouse<Auto> autoWarehouse1) {
+    public WorkerTask(int period1,
+                      AccessoryWarehouse<Accessory> accessoryWarehouse1,
+                      EngineWarehouse<Engine> engineWarehouse1,
+                      BodyworkWarehouse<Bodywork> bodyworkWarehouse1,
+                      AutoWarehouse<Auto> autoWarehouse1) {
         period = period1;
         engineWarehouse = engineWarehouse1;
         bodyworkWarehouse = bodyworkWarehouse1;
@@ -23,10 +26,10 @@ public class Worker extends Thread{
         autoWarehouse = autoWarehouse1;
     }
 
-    public Worker(AccessoryWarehouse<Accessory> accessoryWarehouse1,
-                  EngineWarehouse<Engine> engineWarehouse1,
-                  BodyworkWarehouse<Bodywork> bodyworkWarehouse1,
-                  AutoWarehouse<Auto> autoWarehouse1) {
+    public WorkerTask(AccessoryWarehouse<Accessory> accessoryWarehouse1,
+                      EngineWarehouse<Engine> engineWarehouse1,
+                      BodyworkWarehouse<Bodywork> bodyworkWarehouse1,
+                      AutoWarehouse<Auto> autoWarehouse1) {
         period = 1000;
         engineWarehouse = engineWarehouse1;
         bodyworkWarehouse = bodyworkWarehouse1;
@@ -36,7 +39,7 @@ public class Worker extends Thread{
 
 
      @Override
-    public void run() {
+    public void execute() {
          try {
              sleep(period);
          } catch (InterruptedException e) {

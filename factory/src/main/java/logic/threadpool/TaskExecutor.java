@@ -11,7 +11,7 @@ public class TaskExecutor extends Thread{
     @Override
     public void run() {
         while (true) {
-            myThreadPool.getTask().start();
+            myThreadPool.getTask().execute();
         }
     }
 
