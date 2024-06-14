@@ -8,14 +8,14 @@ import org.slf4j.Logger;
 
 public class Dealer extends Thread{
     private int period;
-    protected AutoWarehouse<Auto> warehouse;
+    protected AutoWarehouse<Auto> autoWarehouse;
     protected final FactoryController factoryController;
     private int dealerNumber;
     private final Logger logger = LoggerFactory.getLogger(Dealer.class);
     private boolean logUse;
     //хранилище
     public Dealer(int period1,
-                  AutoWarehouse<Auto> warehouse1,
+                  AutoWarehouse<Auto> warehouse,
                   FactoryController factoryController,
                   boolean logUse,
                   int dealerNumber) {
@@ -25,18 +25,14 @@ public class Dealer extends Thread{
             throw new RuntimeException();
         }
         this.period = period1;
-        this.warehouse = warehouse1;
+        this.autoWarehouse = warehouse;
         this.factoryController = factoryController;
 
     }
 
     void buy()  throws InterruptedException {
         sleep(period);
-        synchronized (factoryController) {
-            factoryController.notify();
-        }
-        //Auto auto = warehouse.get();
-        Auto auto = (Auto) factoryController.getAutoWarehouse().get();
+        Auto auto = autoWarehouse.get();
         if (logUse) {
             logger.info("Dealer {0} : Auto {1} : (Bodywork: {2}, Engine {3}, Accessory {4})",
                     dealerNumber, auto.getId(), auto.getBodywork().getId(), auto.getEngine().getId(), auto.getAccessory().getId());
@@ -46,10 +42,12 @@ public class Dealer extends Thread{
 
     @Override
     public void run() {
-        try {
-            buy();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+        while (true) {
+            try {
+                buy();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
 

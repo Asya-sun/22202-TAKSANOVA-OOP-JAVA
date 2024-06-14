@@ -6,7 +6,6 @@ import logic.details.Detail;
 abstract public class Supplier extends Thread {
     protected int period;
     protected Warehouse<Detail> warehouse;
-    //хранилище
 
     public Supplier(int period1, Warehouse<Detail> warehouse1) {
         if (period1 < 0) {
@@ -21,11 +20,14 @@ abstract public class Supplier extends Thread {
 
     @Override
     public void run() {
-        try {
-            supply();
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
+        while (true) {
+            try {
+                supply();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
         }
+
     }
 
     public void setPeriod(int period) {

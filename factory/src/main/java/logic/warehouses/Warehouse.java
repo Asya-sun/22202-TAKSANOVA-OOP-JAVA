@@ -1,24 +1,25 @@
 package logic.warehouses;
 
-import logic.details.Detail;
-import logic.threadpool.ThreadsQueue;
+import java.util.ArrayDeque;
 
-abstract public class Warehouse<Detail> extends ThreadsQueue<Detail> {
+abstract public class Warehouse<Detail> {
     protected int storageSize;
     protected int totalNumber;
+    protected ArrayDeque<Detail> details;
     
     public Warehouse (int storageSize) {
         this.storageSize = storageSize;
         this.totalNumber = 0;
+        details = new ArrayDeque<>();
     }
 
     public boolean isFull() {
-        return (queue.size() == storageSize);
+        return (details.size() == storageSize);
     }
 
-    @Override
     synchronized public void put(Detail a) {
-        if (isFull()) {
+        //if (isFull()) {
+        while (isFull()) {
             try {
                 wait();
             } catch (InterruptedException e) {
@@ -26,18 +27,25 @@ abstract public class Warehouse<Detail> extends ThreadsQueue<Detail> {
             }
         }
         totalNumber++;
-        super.put(a);
+        details.push(a);
+        notify();
     }
 
 
-    @Override
     synchronized public Detail get() {
         notify();
-        return super.get();
+        while (details.isEmpty()) {
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
+        return details.pop();
     }
 
     public int getCurrentSize() {
-        return queue.size();
+        return details.size();
     }
 
     public int getStorageSize() {

@@ -32,7 +32,7 @@ public class Factory extends JFrame  implements Runnable, Observer {
     //dealers
     private final ArrayList<Dealer> dealers;
     //autro warehouse controller
-    private final FactoryController autoWarehouseController;
+    private final FactoryController factoryController;
 
     public Parameters parameters;
 
@@ -56,12 +56,13 @@ public class Factory extends JFrame  implements Runnable, Observer {
 
 
         //controllers initializing
-        autoWarehouseController = new FactoryController( accessoryWarehouse ,autoWarehouse, bodyworkWarehouse, engineWarehouse, configParser.getValue(ConfigParameters.WorkerNumber));
+        factoryController = new FactoryController( accessoryWarehouse ,autoWarehouse, bodyworkWarehouse, engineWarehouse, configParser.getValue(ConfigParameters.WorkerNumber));
 
+        autoWarehouse.setFactoryController(factoryController);
 
         boolean useLog = configParser.getValue(ConfigParameters.LogUse) == 1 ? true : false;
         for (int i = 0; i < configParser.getValue(ConfigParameters.DealerNumber); ++i) {
-            dealers.add(new Dealer(parameters.dealerPeriod, autoWarehouse, autoWarehouseController, useLog, i));
+            dealers.add(new Dealer(parameters.dealerPeriod, autoWarehouse, factoryController, useLog, i));
         }
 
         parameters.addObserver(this);
@@ -91,7 +92,8 @@ public class Factory extends JFrame  implements Runnable, Observer {
         for (Dealer dealer : dealers) {
             dealer.start();
         }
-        autoWarehouseController.start();
+        //factoryController.run();
+
     }
 
     @Override

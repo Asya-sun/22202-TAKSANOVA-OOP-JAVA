@@ -12,9 +12,7 @@ public class BodyworkSupplier extends Supplier {
 
     @Override
     void supply() throws InterruptedException {
-        while (true) {
-            sleep(period);
-            warehouse.put(new Bodywork(CreatorID.getID()));
-        }
+        sleep(period);
+        warehouse.put(new Bodywork(CreatorID.getID()));
     }
 }

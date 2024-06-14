@@ -13,9 +13,7 @@ public class EngineSupplier extends Supplier {
 
     @Override
     void supply() throws InterruptedException {
-        while (true) {
-            sleep(period);
-            warehouse.put(new Engine(CreatorID.getID()));
-        }
+        sleep(period);
+        warehouse.put(new Engine(CreatorID.getID()));
     }
 }

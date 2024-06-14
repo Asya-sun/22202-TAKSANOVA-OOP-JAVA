@@ -12,9 +12,7 @@ public class AccessorySupplier extends Supplier {
 
     @Override
     void supply() throws InterruptedException {
-        while (true) {
-            sleep(period);
-            warehouse.put(new Accessory(CreatorID.getID()));
-        }
+        sleep(period);
+        warehouse.put(new Accessory(CreatorID.getID()));
     }
 }

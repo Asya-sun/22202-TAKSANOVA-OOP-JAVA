@@ -1,16 +1,17 @@
 package logic.threadpool;
 
 public class TaskExecutor extends Thread{
-    private ThreadsQueue<Thread> threadsQueue;
+    private final ThreadPool myThreadPool;
 
-    public TaskExecutor(ThreadsQueue<Thread> threadsQueue1) {
-        threadsQueue = threadsQueue1;
+    public TaskExecutor(ThreadPool threadPool) {
+        myThreadPool = threadPool;
     }
+
 
     @Override
     public void run() {
         while (true) {
-            threadsQueue.get().start();
+            myThreadPool.getTask().start();
         }
     }
 
